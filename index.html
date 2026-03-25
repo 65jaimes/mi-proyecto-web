@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitaciones Bachilleres QRoo - Grupo 6-H</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        /* MANTENEMOS TU PALETA DE COLORES INTÁCTA */
+        :root {
+            --color-1: #472825; /* Marrón oscuro (Encabezados) */
+            --color-2: #96786F; /* Marrón medio (Textos secundarios) */
+            --color-3: #D3AB80; /* Beige oscuro (Acentos/Líneas) */
+            --color-4: #FDE4BC; /* Crema (Fondo de secciones) */
+            --color-5: #FFF4E2; /* Color más bajo (Fondo principal) */
+        }
+
+        /* --- NUEVO ESTILO GLOBAL --- */
+        body {
+            background-color: var(--color-5);
+            color: var(--color-1);
+            font-family: 'Poppins', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fuente más moderna */
+            scroll-behavior: smooth; /* Desplazamiento suave */
+        }
+
+        h1, h2, h3 {
+            color: var(--color-1);
+            font-weight: 800; /* Más gruesa para contraste */
+            letter-spacing: -1px;
+        }
+
+        /* Estilos para la barra de navegación - Estilo Flat */
+        .navbar {
+            background-color: var(--color-1);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--color-5) !important;
+        }
+        .nav-link {
+            color: var(--color-4) !important; /* Crema suave */
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-3) !important; /* Efecto hover beige oscuro */
+        }
+
+        /* --- NUEVO ESTILO DE TABLA --- */
+        .table-responsive-container {
+            background-color: #fff; /* Fondo blanco para resaltar la tabla */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(71, 40, 37, 0.08); /* Sombra suave con color-1 */
+            border: 1px solid rgba(211, 171, 128, 0.3); /* Borde muy sutil de color-3 */
+        }
+
+        .table-custom {
+            margin-bottom: 0;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        /* Encabezado de tabla moderno */
+        .table-custom thead th {
+            background-color: #fff;
+            color: var(--color-2);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 20px;
+            border-bottom: 2px solid var(--color-3); /* Línea divisoria */
+        }
+
+        /* Filas de tabla con efecto hover suave */
+        .table-custom tbody tr {
+            transition: background-color 0.2s ease;
+        }
+        .table-custom tbody tr:hover {
+            background-color: rgba(253, 228, 188, 0.3); /* Un toque de color-4 */
+        }
+
+        .table-custom tbody td {
+            color: var(--color-1);
+            padding: 18px 20px;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(211, 171, 128, 0.2); /* Líneas finas */
+        }
+
+        /* --- NUEVO ESTILO DE SECCIONES DE DESCRIPCIÓN (Tipo Card) --- */
+        .desc-section-container {
+            margin-top: 4rem;
+        }
+
+        .desc-section {
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(211, 171, 128, 0.3); /* Borde sutil */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto hover en las tarjetas de descripción */
+        .desc-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(71, 40, 37, 0.1);
+            border-color: var(--color-3);
+        }
+
+        .desc-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-1);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        /* Línea decorativa bajo el título */
+        .desc-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-3);
+            border-radius: 2px;
+        }
+
+        .desc-section p strong {
+            color: var(--color-1);
+            font-weight: 600;
+        }
+        
+        .desc-text-minor {
+            color: var(--color-2);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* --- NUEVO ESTILO DE PIE DE PÁGINA --- */
+        footer {
+            background-color: var(--color-1);
+            color: var(--color-5);
+            margin-top: 5rem;
+            border-top: 5px solid var(--color-3); /* Acento en el borde superior */
+        }
+        
+        .blockquote p {
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .blockquote-footer {
+            color: var(--color-4); /* Color crema */
+            font-size: 0.9rem;
+        }
+        
+        .footer-divider {
+            border-top: 1px solid rgba(211, 171, 128, 0.3);
+        }
+        
+        .text-group-tag {
+            color: var(--color-3) !important;
+            font-weight: bold;
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            .display-4 { font-size: 2.5rem; }
+            .desc-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bachilleres QRoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#capacitaciones">Capacitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tics">TICS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#administracion">Administración</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#turismo">Turismo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#comunicacion">Comunicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contabilidad">Contabilidad</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-4">
+        
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-extrabold">Oferta Educativa</h1>
+                <p class="lead col-md-8 mx-auto desc-text-minor">Explora las capacitaciones técnicas diseñadas para impulsar tu futuro profesional en el Colegio de Bachilleres.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5" id="capacitaciones">
+            <div class="col-lg-10">
+                <div class="table-responsive-container">
+                    <table class="table table-custom table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="w-40">Capacitación</th>
+                                <th scope="col" class="w-60">Descripción Breve</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold fs-6">Tecnologías de la Información y Comunicación</td>
+                                <td class="desc-text-minor">Resolver problemas mediante algoritmos, programación y ciudadanía digital.</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold fs-6">Administración</td>
+                                <td class="desc-text-minor">Desarrollar proyectos emprendedores y estructurar organizaciones factibles.</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold fs-6">Turismo en Inglés</td>
+                                <td class="desc-text-minor">Brindar servicios turísticos sustentables y de calidad usando el idioma inglés.</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold fs-6">Comunicación</td>
+                                <td class="desc-text-minor">Diseñar mensajes para radio, TV e impresos con planes de promoción integrales.</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold fs-6">Contabilidad</td>
+                                <td class="desc-text-minor">Aplicar procesos contables y financieros de forma ética para la toma de decisiones.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row desc-section-container">
+            <div class="col-12 text-center mb-5">
+                <h2 class="fw-bold">Conoce los detalles de cada perfil</h2>
+                <p class="desc-text-minor">Información completa sobre campos disciplinares, propósitos y perfiles ocupacionales.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                
+                <section id="tics" class="desc-section">
+                    <h2>Tecnologías de la Información</h2>
+                    <p class="mb-2"><strong>Campo Disciplinar:</strong> Comunicación.</p>
+                    <p class="desc-text-minor mb-3"><strong>Descripción:</strong> Desarrolla habilidades comunicativas, verbales y no verbales para expresarse a través de diversos códigos y herramientas. Se vincula con Matemáticas y Comunicación mediante algoritmos y programación.</p>
+                    <p class="desc-text-minor m-0"><strong>Propósito:</strong> Proponer soluciones a problemas laborales y escolares de forma creativa e innovadora, con una postura ética como ciudadano digital.</p>
+                </section>
+
+                <section id="administracion" class="desc-section">
+                    <h2>Administración</h2>
+                    <p class="mb-2"><strong>Campo Disciplinar:</strong> Ciencias Sociales.</p>
+                    <p class="desc-text-minor mb-3"><strong>Descripción:</strong> Permite representar la realidad social para transformarla mediante el descubrimiento de significados y generación de ideas.</p>
+                    <p class="desc-text-minor mb-3"><strong>Propósito:</strong> Proporcionar herramientas para estructurar proyectos sustentables y factibles con visión emprendedora.</p>
+                    <p class="desc-text-minor m-0"><strong>Perfil Ocupacional:</strong> Auxiliar administrativo, asistente de investigación, ventas, servicios financieros y analista de relaciones públicas.</p>
+                </section>
+
+                <section id="turismo" class="desc-section">
+                    <h2>Turismo en Inglés</h2>
+                    <p class="mb-2"><strong>Campo Disciplinar:</strong> Ciencias Sociales.</p>
+                    <p class="desc-text-minor mb-3"><strong>Descripción:</strong> Promueve liderazgo, innovación, autoaprendizaje y comunicación asertiva para brindar servicios sustentables.</p>
+                    <p class="desc-text-minor m-0"><strong>Propósito:</strong> Valorar el dominio del inglés en el sector turístico, implementando técnicas de discurso lingüístico para solventar requerimientos del turista con comunicación empática y respetando el marco legal.</p>
+                </section>
+
+                <section id="comunicacion" class="desc-section">
+                    <h2>Comunicación</h2>
+                    <p class="mb-2"><strong>Campo Disciplinar:</strong> Comunicación y Humanidades.</p>
+                    <p class="desc-text-minor mb-3"><strong>Descripción:</strong> Desarrolla conocimientos para analizar y diseñar mensajes en radio, televisión e impresos para planes de promoción.</p>
+                    <p class="desc-text-minor m-0"><strong>Propósito:</strong> Descubrir habilidades para concretar productos como textos, discursos y audiovisuales innovadores de impacto masivo que alcancen las expectativas de clientes u organizaciones.</p>
+                </section>
+
+                <section id="contabilidad" class="desc-section">
+                    <h2>Contabilidad</h2>
+                    <p class="mb-2"><strong>Campo Disciplinar:</strong> Ciencias Sociales.</p>
+                    <p class="desc-text-minor mb-3"><strong>Descripción:</strong> Centrada en desarrollar competencias para aplicar procesos contables y administrativos de forma ética.</p>
+                    <p class="desc-text-minor m-0"><strong>Propósito:</strong> Generar información financiera veraz y confiable para la toma de decisiones. Favorece el análisis crítico con visión emprendedora sobre la productividad y competitividad.</p>
+                </section>
+            </div>
+        </div>
+
+    </div> 
+
+    <footer class="container-fluid py-5">
+        <div class="container text-center">
+            
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <blockquote class="blockquote">
+                        <p class="display-6 mb-4" style="color: var(--color-5); font-weight: 200;">
+                            "En un mundo dictado por algoritmos, no solo aprendemos a usar la tecnología; 
+                            <strong style="font-weight: 700;">aprendemos a programar el futuro.</strong>"
+                        </p>
+                        <footer class="blockquote-footer mt-2">
+                            Porque en TICs, el único límite es el alcance de tu imaginación 
+                            y la línea de código que te atreves a escribir.
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+
+            <hr class="my-5 w-25 mx-auto footer-divider">
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-uppercase tracking-wider mb-2" style="color: var(--color-5); font-size: 0.9rem; letter-spacing: 2px;">
+                        Proyecto Integrador 2026 | Orgullosamente <span class="text-group-tag">Grupo 6-H</span>
+                    </p>
+                    <small style="color: var(--color-4); opacity: 0.8;">Bachilleres Quintana Roo - Sección de Capacitaciones</small>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
